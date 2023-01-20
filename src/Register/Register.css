@@ -1,0 +1,30 @@
+.mobile-container {
+  width: 350px;
+  border: 5px solid #1a2e35;
+  height: 500px;
+  border-radius: 30px;
+  border-top: 30px solid #1a2e35;
+  border-bottom: 40px solid #1a2e35;
+  position: relative;
+  margin: 20px auto;
+}
+
+.cam-area {
+  position: absolute;
+  height: 8px;
+  width: 70px;
+  background: #335d6d;
+  top: -15px;
+  left: 135px;
+  border-radius: 20px;
+}
+
+.bottom-circle {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  background: #335d6d;
+  bottom: -33px;
+  left: 158px;
+  border-radius: 50%;
+}
