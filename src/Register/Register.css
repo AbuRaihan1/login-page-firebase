@@ -69,7 +69,7 @@
 }
 .or {
   position: relative;
-  margin: 20px 0;
+  margin: 14px 0;
 }
 .or::before {
   content: "";
@@ -129,7 +129,7 @@ small {
   color: #ff5200;
   text-align: center;
   display: block;
-  margin-top: 8px;
+  margin-top: 15px;
 }
 
 small a {
