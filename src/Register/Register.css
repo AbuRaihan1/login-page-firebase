@@ -7,14 +7,28 @@
   border-bottom: 40px solid #1a2e35;
   position: relative;
   margin: 20px auto;
+  background: rgb(230, 225, 225);
+  /* padding: 20px; */
 }
 
+.signup-wrapper {
+  box-shadow: 1px 1px 8px lightgray;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background: white;
+  height: 87%;
+}
+.signup-wrapper h2 {
+  color: #ff5200;
+  margin-top: 0;
+}
 .cam-area {
   position: absolute;
   height: 8px;
   width: 70px;
   background: #335d6d;
-  top: -15px;
+  top: -18px;
   left: 135px;
   border-radius: 20px;
 }
@@ -27,4 +41,97 @@
   bottom: -33px;
   left: 158px;
   border-radius: 50%;
+}
+
+.signin-third-party {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  border: none;
+  background: #ff5200;
+  padding: 10px 30px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 16px;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+.btn:hover {
+  background: #dd4b07;
+}
+.or {
+  position: relative;
+  margin: 20px 0;
+}
+.or::before {
+  content: "";
+  height: 2px;
+  width: 100px;
+  left: 35px;
+  top: 12px;
+  background: #ff5200;
+  position: absolute;
+}
+.or::after {
+  content: "";
+  height: 2px;
+  width: 100px;
+  right: 35px;
+  top: 12px;
+  background: #ff5200;
+  position: absolute;
+}
+
+.info-area {
+  text-align: left;
+}
+.info-area label {
+  font-weight: bold;
+}
+
+.name-area {
+  display: flex;
+}
+.name-area input {
+  width: 80% !important;
+}
+.info-area label input {
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border: 1px solid lightgray;
+  padding: 8px 10px;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+  width: 90%;
+}
+
+.info-area label input:focus {
+  outline: none;
+  border: 1px solid #ff5200;
+}
+
+.crate-account-btn {
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+small {
+  color: #ff5200;
+  text-align: center;
+  display: block;
+  margin-top: 8px;
+}
+
+small a {
+  text-decoration: none;
 }
