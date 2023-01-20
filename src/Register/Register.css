@@ -23,6 +23,10 @@
   color: #ff5200;
   margin-top: 0;
 }
+
+.signup-wrapper h2 span {
+  font-size: 13px;
+}
 .cam-area {
   position: absolute;
   height: 8px;
@@ -112,6 +116,7 @@
   border-radius: 5px;
   transition: all 0.2s ease-in-out;
   width: 90%;
+  background: #ece7e7;
 }
 
 .info-area label input:focus {
@@ -130,8 +135,16 @@ small {
   text-align: center;
   display: block;
   margin-top: 15px;
+  font-weight: bold;
 }
 
 small a {
   text-decoration: none;
+}
+
+/* login js css  */
+.foterArea {
+  position: absolute;
+  bottom: 60px;
+  left: 67px;
 }

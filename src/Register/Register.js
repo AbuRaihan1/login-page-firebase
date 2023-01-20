@@ -8,7 +8,9 @@ const Register = () => {
       <div className="bottom-circle"></div>
 
       <div className="signup-wrapper">
-        <h2>Sign up</h2>
+        <h2>
+          Sign up <span>with,</span>
+        </h2>
         <div className="signin-third-party">
           <button className="btn"> github</button>
           <button className="btn"> Facebook</button>
@@ -37,7 +39,7 @@ const Register = () => {
           </label>
           <button className="btn crate-account-btn">Create Account</button>
           <small>
-            Already have an account?  <a href="#">Login here</a>
+            Already have an account? <Link to='/login'>Login here</Link>
           </small>
         </div>
       </div>
