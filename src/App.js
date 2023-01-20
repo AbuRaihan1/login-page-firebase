@@ -7,27 +7,27 @@ import Register from "./Register/Register";
 function App() {
   const router = createBrowserRouter([
     {
-      path : '/',
-      element : <Main></Main>,
-      children : [
+      path: "/",
+      element: <Main></Main>,
+      children: [
         {
-          path : '/',
-          element : <Register></Register>
+          path: "/",
+          element: <Register></Register>,
         },
         {
-          path : '/register',
-          element : <Register></Register>
+          path: "/register",
+          element: <Register></Register>,
         },
         {
-          path : '/login',
-          element : <Login></Login>
+          path: "/login",
+          element: <Login></Login>,
         },
-      ]
-    }
-  ])
+      ],
+    },
+  ]);
   return (
     <div className="App">
-       <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
