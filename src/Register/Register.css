@@ -74,6 +74,7 @@
 .or {
   position: relative;
   margin: 14px 0;
+  text-align: center; 
 }
 .or::before {
   content: "";
@@ -131,7 +132,7 @@
 }
 
 small {
-  color: #ff5200;
+  /* color: #ff5200; */
   text-align: center;
   display: block;
   margin-top: 15px;
@@ -142,9 +143,19 @@ small a {
   text-decoration: none;
 }
 
+.register-footer {
+  position: absolute;
+  bottom: 70px;
+  margin-left: 25px;
+}
+
+.register-footer .btn {
+  width: 100%;
+}
 /* login js css  */
 .foterArea {
-  position: absolute;
+  /* position: absolute;
   bottom: 60px;
-  left: 77px;
+  left: 77px; */
+  text-align: center;
 }

@@ -1,16 +1,21 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import app from "../firebase/firebase.init";
+import useFirebase from "../Hook/useFirebase";
 import "./Login.css";
 
 const auth = getAuth(app);
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-
+  const { handleGoogleLogin, handleFacebookLogin, handleGithubLogin } =
+    useFirebase();
   const loginHandler = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,16 +28,33 @@ const Login = () => {
           position: "top-center",
           icon: "success",
           title: "Congrats! you are loged in",
-          showConfirmButton: true,
-          timer: 1500,
         });
         form.reset();
         console.log(user);
       })
       .catch((error) => {
         console.error(error);
+        Swal.fire("oops!", "Email or password wrong!", "error");
       });
-    console.log(email, password);
+  };
+
+  const handleForgetPassword = () => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("reset password sent in your mail");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        if (!email) {
+          Swal.fire("oops!", "Please Enter your email", "error");
+        }
+        setError(error.message);
+      });
+  };
+
+  const getEmail = (e) => {
+    const email = e.target.value;
+    setEmail(email);
   };
 
   return (
@@ -40,31 +62,58 @@ const Login = () => {
       <div className="cam-area"></div>
       <div className="bottom-circle"></div>
 
-      <form onSubmit={loginHandler}>
-        <div className="signup-wrapper">
+      <div className="signup-wrapper">
+        <form onSubmit={loginHandler}>
           <h2> Welcome Back </h2>
           <div className="info-area">
             <label htmlFor="">
               Email
-              <input type="email" required name="email" />
+              <input type="email" required name="email" onBlur={getEmail} />
             </label>
 
             <label htmlFor="">
               Password
               <input type="password" required name="password" />
             </label>
+            <p style={{ color: "red" }}>{error}</p>
             <div className="foterArea">
               <button className="btn crate-account-btn">Login</button>
               <small>
-                Don't have a account? <Link to="/register">Sign Up</Link>
+                Don't have a account?{" "}
+                <Link
+                  to="/register"
+                  style={{ color: "#ff5200", cursor: "pointer" }}
+                >
+                  Sign Up
+                </Link>
               </small>
-              <small style={{ color: "blue" }}>
-                Forget password? <span>Reset here</span>
-              </small>
+              <span style={{ fontWeight: "bold", fontSize: "13px" }}>
+                Forget password?{" "}
+                <span
+                  style={{ color: "#ff5200", cursor: "pointer" }}
+                  onClick={handleForgetPassword}
+                >
+                  Reset here
+                </span>
+              </span>
+            </div>
+
+            <div>
+              <div className="or">or</div>
             </div>
           </div>
+        </form>
+        <div className="signin-third-party">
+          <button className="btn" onClick={handleGoogleLogin}>
+            {" "}
+            Google
+          </button>
+          <button className="btn" onClick={handleGithubLogin}>
+            {" "}
+            Github
+          </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

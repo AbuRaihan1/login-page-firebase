@@ -53,8 +53,6 @@ const Register = () => {
           position: "top-center",
           icon: "success",
           title: "Registration Done",
-          showConfirmButton: true,
-          timer: 1500,
         });
         form.reset();
         console.log(user);
@@ -94,15 +92,7 @@ const Register = () => {
 
       <form onSubmit={submitHandler}>
         <div className="signup-wrapper">
-          <h2>
-            Sign up <span>with,</span>
-          </h2>
-          <div className="signin-third-party">
-            <button className="btn"> github</button>
-            <button className="btn"> Facebook</button>
-          </div>
-
-          <div className="or">or</div>
+          <h2>Sign up</h2>
           <div className="info-area">
             <label htmlFor="" className="name-area">
               <span>
@@ -136,12 +126,15 @@ const Register = () => {
               <input type="password" required name="password" />
             </label>
             <p style={{ color: "red" }}>{error}</p>
-            <button type="submit" className="btn crate-account-btn">
-              Create Account
-            </button>
-            <small>
-              Already have an account? <Link to="/login">Login here</Link>
-            </small>
+
+            <div className="register-footer">
+              <button type="submit" className="btn crate-account-btn">
+                Create Account
+              </button>
+              <small>
+                Already have an account? <Link to="/login">Login here</Link>
+              </small>
+            </div>
           </div>
         </div>
       </form>
