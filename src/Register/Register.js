@@ -5,7 +5,7 @@ const Register = () => {
   const [firstname, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const submitHandler = (e) => {
@@ -15,6 +15,26 @@ const Register = () => {
     const lastName = form.lastName.value;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(firstName, lastName, email, password);
+
+    // password validation
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setError("Use at least 1 letter uppercase");
+      return;
+    }
+    if (!/(?=.*\d)/.test(password)) {
+      setError("Use at least one decimal number");
+      return;
+    }
+    if (!/(?=.*[@$!%*#?&])/.test(password)) {
+      setError("Use special keyword");
+      return;
+    }
+    if (password.length < 6) {
+      setError("Use minimum 6 character password");
+      return;
+    }
+    setError("");
   };
   return (
     <div className="mobile-container">
@@ -52,6 +72,7 @@ const Register = () => {
               Password
               <input type="password" required name="password" />
             </label>
+            <p style={{ color: "red" }}>{error}</p>
             <button type="submit" className="btn crate-account-btn">
               Create Account
             </button>

@@ -22,7 +22,7 @@ const Login = () => {
           <div className="foterArea">
             <button className="btn crate-account-btn">Login</button>
             <small>
-              Don't have a account?  <Link to='/register'>Sign Up</Link>
+              Don't have a account? <Link to="/register">Sign Up</Link>
             </small>
           </div>
         </div>

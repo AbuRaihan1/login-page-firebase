@@ -1,7 +1,7 @@
 .mobile-container {
   width: 350px;
   border: 5px solid #1a2e35;
-  height: 500px;
+  height: 520px;
   border-radius: 30px;
   border-top: 30px solid #1a2e35;
   border-bottom: 40px solid #1a2e35;
@@ -17,7 +17,7 @@
   padding: 10px;
   border-radius: 10px;
   background: white;
-  height: 87%;
+  height: 460px;
 }
 .signup-wrapper h2 {
   color: #ff5200;
