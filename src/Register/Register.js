@@ -1,11 +1,19 @@
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from "firebase/auth";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import app from "../firebase/firebase.init";
 import "./Register.css";
+const auth = getAuth(app);
+
 const Register = () => {
-  const [firstname, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const submitHandler = (e) => {
@@ -35,6 +43,49 @@ const Register = () => {
       return;
     }
     setError("");
+
+    // creating user with email and password
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        const user = result.user;
+        updateDisplayName(firstName, lastName);
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Registration Done",
+          showConfirmButton: true,
+          timer: 1500,
+        });
+        form.reset();
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+        if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+          setError("Email Already in used");
+        }
+      });
+  };
+
+  // get name from input.
+  const getFirstName = (e) => {
+    const firstName = e.target.value;
+    setFirstName(firstName);
+  };
+  const getLastName = (e) => {
+    const lastName = e.target.value;
+    setLastName(lastName);
+  };
+
+  // add display name in
+  const updateDisplayName = (firstName, lastName) => {
+    updateProfile(auth.currentUser, {
+      displayName: firstName + lastName,
+    })
+      .then(() => {})
+      .catch((error) => {
+        console.error(error);
+      });
   };
   return (
     <div className="mobile-container">
@@ -56,10 +107,22 @@ const Register = () => {
             <label htmlFor="" className="name-area">
               <span>
                 {" "}
-                First Name <input type="text" required name="firstName" />
+                First Name{" "}
+                <input
+                  type="text"
+                  required
+                  name="firstName"
+                  onBlur={getFirstName}
+                />
               </span>
               <span>
-                Last Name <input type="text" name="lastName" />
+                Last Name{" "}
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="optional"
+                  onBlur={getLastName}
+                />
               </span>
             </label>
 
