@@ -32,7 +32,8 @@ const useFirebase = () => {
         console.log(error.message);
       });
   };
-  const githubProvider = new GithubAuthProvider()
+
+  const githubProvider = new GithubAuthProvider();
   const handleGithubLogin = () => {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
